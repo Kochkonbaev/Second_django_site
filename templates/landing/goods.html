@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+Новости
+{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Добро Пожаловать!</h1>
+      <p class="lead text-muted">На этой странице можете можете почитать новости, почитать о наших сотрудников и отправить Ваш вопрос.</p>
+    </div>
+  </div>
+</section>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+       
+            <p class="h4">Новости</p>
+            <div class="card" style="width: 80rem;">
+                {% for one_news in all_goods %}
+                <img src={{one_news.img}} class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">{{one_news.title}}</h5>
+                  <p class="card-text">{{one_news.text}}</p>
+                  <a href={% url 'goods_detail' pk=one_news.pk %} class="btn btn-primary">Читать полностью</a>
+                </div>
+  
+                {% endfor %}
+              </div>
+  
+            <p class="h4">Работники</p>
+            <div class="card" style="width: 80rem;">
+              {% for one_worker in workers %}
+              <img src={{one_worker.img}} class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{one_worker.firs_name}}</h5>
+                <p class="card-text">{{one_worker.last_name}}</p>
+                <p class="card-text">{{one_worker.position}}</p>
+                <a href={% url 'workers_detail' pk=one_worker.pk %} class="btn btn-primary">Читать полностью</a>
+              </div>
+  
+              {% endfor %}
+            </div>
+
+            <p class="h4">Оставить заявку</p>
+    </div>
+    <div class="mb-2" style="width: 80rems;">
+      <form method="POST">
+      
+        <label for="exampleFormControlInput1" class="form-label">Укажите почту</label>
+        {{ form.email }}
+        <label for="exampleFormControlInput1" class="form-label">Укажите имя</label>
+        {{ form.name }}           
+        <label for="exampleFormControlTextarea1" class="form-label">Ваш вопрос</label>
+        {{ form.body }}
+      
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+

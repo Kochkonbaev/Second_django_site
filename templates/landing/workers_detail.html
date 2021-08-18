@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{workers_detail.title}}
+{% endblock %}
+
+{% block content %}
+
+    <img src={{workers_detail.img}} height="100" width="150">
+    <br>
+    <font size=6>{{ workers_detail.firs_name}} {{ workers_detail.last_name }}</font>
+    <br>
+    <h2>{{workers_detail.position}}</h2>
+    <h3>{{workers_detail.text}}</h3>
+      
+
+{% endblock %}
